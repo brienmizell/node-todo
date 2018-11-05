@@ -1,3 +1,10 @@
-// console.log(`hello ${personName}`);
+const pgp = require('pg-promise')();
+const db = pgp({
+	host: 'localhost',
+	port: 5432,
+	database: 'node-todo-app-db'
+});
 
-console.log(`that should not have woked correctly.`);
+db.any('select * from todos').then((results) => {
+	console.log(results);
+});
