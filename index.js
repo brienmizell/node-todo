@@ -7,7 +7,11 @@ User.deleteById(2).then((result) => {
 	console.log(result);
 });
 
-Todo.deleteById(1).then((result) => {
+// let u = User.findById(1);
+// u.name = 'eileeeeeen';
+// u.save();
+
+Todo.deleteById('asdfasdfasf').then((result) => {
 	console.log(result);
 });
 

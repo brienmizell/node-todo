@@ -1,5 +1,28 @@
 const db = require('./db');
 
+// declare a class named "User"
+class User {
+	// what properties should
+	// a user start off with?
+	// `constructor` is a method
+	// that is automatically
+	// called when you create a user
+	constructor() {
+		// define properties that
+		// are also the names
+		// of the database columns.
+		this.name = name;
+	}
+
+	// a method is a function "belongs"
+	// to an object
+	greet(otherUser) {
+		console.log(`hello ${otherUser.name}, I am ${this.name}`);
+	}
+}
+
+function doThing() {}
+
 // ============================================
 // CREATE
 function add(name) {
@@ -78,5 +101,6 @@ module.exports = {
 	getAll,
 	getById,
 	getTodosForUser,
-	updateName
+	updateName,
+	User
 };
