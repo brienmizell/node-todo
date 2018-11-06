@@ -1,4 +1,4 @@
-insert into todos
+insert into todos 
     (name, completed)
 values
     ('walk the cat', false),

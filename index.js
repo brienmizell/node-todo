@@ -3,9 +3,10 @@ require('dotenv').config();
 // const Todo = require('./models/Todo');
 const User = require('./models/User');
 
-User.searchByName('jef').then((users) => {
-	console.log(users);
-});
+User.searchByName('jef')
+    .then(users => {
+        console.log(users);
+    });
 
 // User.getById(6)
 //     .then(u => {
@@ -50,6 +51,10 @@ User.searchByName('jef').then((users) => {
 //         })
 // });
 
+
+
+
+
 // User.add('jeff')
 // User.add('jeff')
 // User.add('jeff')
@@ -59,6 +64,7 @@ User.searchByName('jef').then((users) => {
 //                 console.log(`${theNewUser.name} has ${todos.length} things todo`);
 //             })
 //     })
+
 
 // const skyler = new User('Skyler the Dog');
 // const ahjuma = new User('Ahjuma the Impressive');
@@ -84,32 +90,34 @@ User.searchByName('jef').then((users) => {
 // Todo.assignToUser(2, 2)
 //     .then(() => {
 //         User.getTodosForUser(2)
-//         .then(result => { console.log(result); })
-//     })
+//         .then(result => { console.log(result); }) 
+//     })      
 
 // Todo.assignToUser(5, 2)
 //     .then(() => {
 //         User.getTodosForUser(2)
 //         .then(result => { console.log(result); })
-//     })
+//     })       
 // Todo.assignToUser(3, 2)
 //     .then(() => {
 //         User.getTodosForUser(2)
-//         .then(result => { console.log(result); })
-//     })
+//         .then(result => { console.log(result); })    
+//     })           
 // Todo.assignToUser(4, 5)
 //     .then(() => {
 //         User.getTodosForUser(2)
 //         .then(result => { console.log(result); })
-//     })
+//     })    
 // Todo.assignToUser(1, 5)
 //     .then(() => {
 //         User.getTodosForUser(2)
-//         .then(result => { console.log(result); })
+//         .then(result => { console.log(result); })    
 //     })
 
 // User.getAll()
 //     .then(result => { console.log(result); })
+
+
 
 // User.getAll()
 //     .then(results => {
@@ -136,6 +144,8 @@ User.searchByName('jef').then((users) => {
 //         console.log(result);
 //     })
 
+
+
 // User.updateName(6, 'JEEEEEEEEEEEEEEEf')
 //     .then(result => {
 //         console.log(result);
@@ -146,7 +156,10 @@ User.searchByName('jef').then((users) => {
 //         console.log(result);
 //     })
 
+
+
 // User.deleteById(6)
 //     .then(result => {
 //         console.log(result.rowCount);
 //     })
+
