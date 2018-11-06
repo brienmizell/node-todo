@@ -1,16 +1,67 @@
-// getAll()
-//     .then(results => {
-//         console.log(results);
-//         console.log(`yep those were the todos. cool.`)
+require('dotenv').config();
+
+const Todo = require('./models/Todo');
+const User = require('./models/User');
+
+User.deleteById(2).then((result) => {
+	console.log(result);
+});
+
+Todo.deleteById(1).then((result) => {
+	console.log(result);
+});
+
+// User.getTodosForUser(3)
+//     .then(result => { console.log(result); })
+
+// Todo.assignToUser(2, 2)
+//     .then(() => {
+//         User.getTodosForUser(2)
+//         .then(result => { console.log(result); })
 //     })
 
-// getById(2)
+// Todo.assignToUser(5, 2)
+//     .then(() => {
+//         User.getTodosForUser(2)
+//         .then(result => { console.log(result); })
+//     })
+// Todo.assignToUser(3, 2)
+//     .then(() => {
+//         User.getTodosForUser(2)
+//         .then(result => { console.log(result); })
+//     })
+// Todo.assignToUser(4, 5)
+//     .then(() => {
+//         User.getTodosForUser(2)
+//         .then(result => { console.log(result); })
+//     })
+// Todo.assignToUser(1, 5)
+//     .then(() => {
+//         User.getTodosForUser(2)
+//         .then(result => { console.log(result); })
+//     })
+
+// User.getAll()
 //     .then(result => { console.log(result); })
 
-// getById(2000000)
+// User.getAll()
+//     .then(results => {
+//         console.log(results);
+//         console.log(`yep those were the users. cool.`)
+//     })
+
+// User.getById('chris')
 //     .then(result => { console.log(result); })
 
-// add('walk the chewbacca', false)
+// Todo.getById(2000000)
+//     .then(result => { console.log(result); })
+
+// User.add('jeff')
+//     .then(result => {
+//         console.log(result);
+//     })
+
+// Todo.add('walk the chewbacca', false)
 //     .catch(err => {
 //         console.log(err);
 //     })
@@ -18,17 +69,17 @@
 //         console.log(result);
 //     })
 
-// updateName(2, 'buy new hyperdrive')
+// User.updateName(6, 'JEEEEEEEEEEEEEEEf')
 //     .then(result => {
 //         console.log(result);
 //     })
 
-// markPending(1)
+// Todo.markCompleted(1)
 //     .then(result => {
 //         console.log(result);
 //     })
 
-// deleteById(10)
+// User.deleteById(6)
 //     .then(result => {
 //         console.log(result.rowCount);
 //     })

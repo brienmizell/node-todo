@@ -1,10 +1,21 @@
+
+
+-- USERs
+-- name
+create table users
+(
+    id serial primary key,
+    name text
+);
+
 -- TODOs
 -- name
 -- completed
-
-CREATE TABLE todos
+create table todos
 (
-    id Serial PRIMARY KEY,
+    id serial primary key,
     name text,
-    completed boolean
-); 
+    completed boolean,
+    user_id integer references users (id) on delete cascade
+);
+
