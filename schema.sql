@@ -16,4 +16,3 @@ create table todos (
   completed boolean,
   user_id integer references users (id) on delete cascade
 );
-
