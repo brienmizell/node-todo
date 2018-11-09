@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+app.use(express.static('public'));
+
 // Configure body-parser to read data sent by HTML form tags
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -13,11 +15,23 @@ app.use(bodyParser.json());
 // const Todo = require('./models/Todo');
 const User = require('./models/User');
 
+const page = require('./views/page');
+const userList = require('./views/userList');
+
+app.get('/', (req, res) => {
+	const thePage = page('hey there');
+	console.log(thePage);
+	res.send(thePage);
+});
+
 // Listen for a GET request
 app.get('/users', (req, res) => {
 	User.getAll().then((allUsers) => {
 		// res.status(200).json(allUsers);
-		res.send(allUsers);
+		// res.send(allUsers);
+		const usersUL = userList(allUsers);
+		const thePage = page(usersUL);
+		res.send(thePage);
 	});
 });
 
