@@ -2,45 +2,87 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+
+// Configure body-parser to read data sent by HTML form tags
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Configure body-parser to read JSON bodies
+app.use(bodyParser.json());
 
 // const Todo = require('./models/Todo');
 const User = require('./models/User');
 
 // Listen for a GET request
 app.get('/users', (req, res) => {
-    User.getAll()
-        .then(allUsers => {
-            // res.status(200).json(allUsers);
-            res.send(allUsers);
-        })
+	User.getAll().then((allUsers) => {
+		// res.status(200).json(allUsers);
+		res.send(allUsers);
+	});
+});
+
+// Listen for POST requests
+app.post('/users', (req, res) => {
+	console.log(req.body);
+	// res.send('ok');
+	const newUsername = req.body.name;
+	console.log(newUsername);
+	User.add(newUsername).then((theUser) => {
+		res.send(theUser);
+	});
+});
+
+app.post('/users/:id(\\d+)', (req, res) => {
+	const id = req.params.id;
+	const newName = req.body.name;
+	console.log(id);
+	console.log(newName);
+	// res.send('ok');
+
+	// Get the user by their id
+	User.getById(id).then((theUser) => {
+		// call that user's updateName method
+		theUser.updateName(newName).then((result) => {
+			if (result.rowCount === 1) {
+				res.send('yeah you did');
+			} else {
+				res.send('oops');
+			}
+		});
+	});
 });
 
 // Match the string "/users/" followed by one or more digits
 // REGular EXpressions
 // app.get('/users/:id([0-9]+)', (req, res) => {
 app.get(`/users/:id(\\d+)`, (req, res) => {
-    // console.log(req.params.id);
-    User.getById(req.params.id)
-        .catch(err => {
-            res.send({
-                message: `no soup for you`
-            });
-        })
-        .then(theUser => {
-            res.send(theUser);
-        })
+	// console.log(req.params.id);
+	User.getById(req.params.id)
+		.catch((err) => {
+			res.send({
+				message: `no soup for you`
+			});
+		})
+		.then((theUser) => {
+			res.send(theUser);
+		});
 });
 
 app.get('/users/register', (req, res) => {
-    res.send('you are on the registration page. no really.');
+	res.send('you are on the registration page. no really.');
 });
 
+app.get('/users/:id(\\d+)/rename/:newName', (req, res) => {
+	User.getById(req.params.id).then((user) => {
+		user.updateName(req.params.newName).then(() => {
+			res.send('you just renamed them!');
+		});
+	});
+});
 
 app.listen(3000, () => {
-    console.log('You express app is ready!');
+	console.log('You express app is ready!');
 });
-
-
 
 // ===== example of sending a whole page
 
