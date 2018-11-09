@@ -20,7 +20,6 @@ const userList = require('./views/userList');
 
 app.get('/', (req, res) => {
 	const thePage = page('hey there');
-	console.log(thePage);
 	res.send(thePage);
 });
 
@@ -31,13 +30,18 @@ app.get('/users', (req, res) => {
 		// res.send(allUsers);
 		const usersUL = userList(allUsers);
 		const thePage = page(usersUL);
+		console.log(thePage);
 		res.send(thePage);
+
+		// res.send(page(userList(allUsers)));
 	});
 });
 
 // Listen for POST requests
+// Create a new user
 app.post('/users', (req, res) => {
-	console.log(req.body);
+	console.log(req);
+	// console.log(req.body);
 	// res.send('ok');
 	const newUsername = req.body.name;
 	console.log(newUsername);
@@ -46,7 +50,12 @@ app.post('/users', (req, res) => {
 	});
 });
 
-app.post('/users/:id(\\d+)', (req, res) => {
+// Updating an existing user
+// Using POST because HTML Forms can only send GET or POST.
+// HTML Form cannot send a PUT (or a DELETE).
+// app.post('/users/:id(\\d+)', (req, res) => {
+// app.post(/^\/users\/:id(\d+)/, (req, res) => {
+app.post('/users/:id([0-9]+)', (req, res) => {
 	const id = req.params.id;
 	const newName = req.body.name;
 	console.log(id);
@@ -60,11 +69,36 @@ app.post('/users/:id(\\d+)', (req, res) => {
 			if (result.rowCount === 1) {
 				res.send('yeah you did');
 			} else {
-				res.send('oops');
+				res.send('💩');
 			}
 		});
 	});
 });
+
+// Example of grabbing a user by an
+// imaginary "getByName" method.
+// app.post('/users/name/:name([A-Z0-9]+)', (req, res) => {
+//     const name = req.params.name;
+//     const newName = req.body.name;
+//     console.log(id);
+//     console.log(newName);
+//     // res.send('ok');
+
+//     // Get the user by their id
+//     User.getByName(name)
+//         .then(theUser => {
+//             // call that user's updateName method
+//             theUser.updateName(newName)
+//                 .then(result => {
+//                     if (result.rowCount === 1) {
+//                         res.send('yeah you did');
+//                     } else {
+//                         res.send('💩');
+//                     }
+//                 });
+
+//         });
+// });
 
 // Match the string "/users/" followed by one or more digits
 // REGular EXpressions
