@@ -1,8 +1,7 @@
-const { header, footer } = require('./helper')
+const { header, footer } = require('./helper');
 
 function page(content) {
-    
-    return `    
+	return `    
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -15,6 +14,11 @@ function page(content) {
     </head>
     <body>
         ${header()}
+        <div>
+            <form action="/logout" method="POST">
+                <input type="submit" value="logout">
+            </form>
+        </div>
         ${content}
         ${footer()}
     </body>
