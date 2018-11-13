@@ -1,5 +1,5 @@
 function header() {
-	return `
+    return `
         <header>
             <h1>Welcome!</h1>
         </header>
@@ -7,26 +7,27 @@ function header() {
 }
 
 function logoutButton() {
-	return `
-        <div>
-            <form action="/logout" method="POST">
-                <input type="submit" value="logout">
-            </form>
-        </div>
-    `;
+    return `
+    <div>
+        <form action="/logout" method="POST">
+        <input type="submit" value="logout">
+        </form>
+    </div>
+    `;    
 }
 
 function loginOrRegister() {
-	return `
+    return `
     <div>
-        <a href='/login'>Login</a>
-        <a href='/register'>Register</a>
+        <a href="/login">Login</a>
+        |
+        <a href="/register">Register</a>
     </div>
     `;
 }
 
 function footer() {
-	return `
+    return `
         <footer>
             <p>
               &copy; 2018 Turnip Squirrel, LLC
@@ -36,8 +37,8 @@ function footer() {
 }
 
 module.exports = {
-	header,
-	footer,
-	logoutButton,
-	loginOrRegister
+    header,
+    footer,
+    logoutButton,
+    loginOrRegister
 };
